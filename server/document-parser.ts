@@ -1,5 +1,5 @@
 import { promises as fs } from 'fs';
-import * as pdf from 'pdf-parse';
+import pdfParse from 'pdf-parse';
 import * as mammoth from 'mammoth';
 import { createReadStream } from 'fs';
 import { Readable } from 'stream';
@@ -22,7 +22,7 @@ export async function extractTextFromDocument(
 
 async function extractTextFromPdf(pdfBuffer: Buffer): Promise<string> {
   try {
-    const data = await pdf(pdfBuffer);
+    const data = await pdfParse(pdfBuffer);
     return data.text;
   } catch (error) {
     console.error('Error extracting text from PDF:', error);
