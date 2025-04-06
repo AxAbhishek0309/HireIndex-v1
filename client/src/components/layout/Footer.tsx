@@ -39,22 +39,22 @@ export const Footer: React.FC = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Services</h3>
             <ul className="space-y-3">
-              <li><Link href="/resume-analyzer"><a className="text-gray-300 hover:text-white">Resume Analyzer</a></Link></li>
-              <li><Link href="/"><a className="text-gray-300 hover:text-white">ATS Optimization</a></Link></li>
-              <li><Link href="/"><a className="text-gray-300 hover:text-white">Career Resources</a></Link></li>
-              <li><Link href="/"><a className="text-gray-300 hover:text-white">Resume Templates</a></Link></li>
-              <li><Link href="/"><a className="text-gray-300 hover:text-white">Career Coaching</a></Link></li>
+              <li><Link href="/resume-analyzer" className="text-gray-300 hover:text-white">Resume Analyzer</Link></li>
+              <li><Link href="/" className="text-gray-300 hover:text-white">ATS Optimization</Link></li>
+              <li><Link href="/" className="text-gray-300 hover:text-white">Career Resources</Link></li>
+              <li><Link href="/" className="text-gray-300 hover:text-white">Resume Templates</Link></li>
+              <li><Link href="/" className="text-gray-300 hover:text-white">Career Coaching</Link></li>
             </ul>
           </div>
           
           <div>
             <h3 className="text-lg font-semibold mb-4">Company</h3>
             <ul className="space-y-3">
-              <li><Link href="/about"><a className="text-gray-300 hover:text-white">About Us</a></Link></li>
-              <li><Link href="/"><a className="text-gray-300 hover:text-white">Our Team</a></Link></li>
-              <li><Link href="/"><a className="text-gray-300 hover:text-white">Testimonials</a></Link></li>
-              <li><Link href="/"><a className="text-gray-300 hover:text-white">Blog</a></Link></li>
-              <li><Link href="/"><a className="text-gray-300 hover:text-white">Contact Us</a></Link></li>
+              <li><Link href="/about" className="text-gray-300 hover:text-white">About Us</Link></li>
+              <li><Link href="/" className="text-gray-300 hover:text-white">Our Team</Link></li>
+              <li><Link href="/" className="text-gray-300 hover:text-white">Testimonials</Link></li>
+              <li><Link href="/" className="text-gray-300 hover:text-white">Blog</Link></li>
+              <li><Link href="/" className="text-gray-300 hover:text-white">Contact Us</Link></li>
             </ul>
           </div>
           
@@ -86,9 +86,9 @@ export const Footer: React.FC = () => {
             &copy; {new Date().getFullYear()} ResumeCraft. All rights reserved.
           </p>
           <div className="mt-4 md:mt-0 flex space-x-6 text-sm text-gray-400">
-            <Link href="/"><a className="hover:text-white">Privacy Policy</a></Link>
-            <Link href="/"><a className="hover:text-white">Terms of Service</a></Link>
-            <Link href="/"><a className="hover:text-white">Cookies Policy</a></Link>
+            <Link href="/" className="hover:text-white">Privacy Policy</Link>
+            <Link href="/" className="hover:text-white">Terms of Service</Link>
+            <Link href="/" className="hover:text-white">Cookies Policy</Link>
           </div>
         </div>
       </div>

@@ -23,22 +23,22 @@ export const Header: React.FC<HeaderProps> = ({ onChatToggle }) => {
       <div className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <Link href="/">
-              <a className="text-2xl font-bold">
-                <span className="text-blue-600">Resume</span>
-                <span className="text-purple-500">Craft</span>
-              </a>
+            <Link href="/" className="text-2xl font-bold">
+              <span className="text-blue-600">Resume</span>
+              <span className="text-purple-500">Craft</span>
             </Link>
             <nav className="hidden md:flex ml-10 space-x-8">
               {navItems.map((item) => (
-                <Link key={item.name} href={item.href}>
-                  <a className={`${
+                <Link 
+                  key={item.name} 
+                  href={item.href}
+                  className={`${
                     item.active 
                       ? 'text-blue-600 border-b-2 border-blue-600' 
                       : 'text-gray-900 hover:text-blue-600'
-                    } font-medium`}>
-                    {item.name}
-                  </a>
+                    } font-medium`}
+                >
+                  {item.name}
                 </Link>
               ))}
             </nav>
