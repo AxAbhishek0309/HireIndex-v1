@@ -1,8 +1,8 @@
 import { resumeAnalysis, type ResumeAnalysis, type InsertResumeAnalysis, users, type User, type InsertUser } from "@shared/schema";
+import { db } from "./db";
+import { eq, desc } from "drizzle-orm";
 
-// modify the interface with any CRUD methods
-// you might need
-
+// Storage interface defines the methods for interacting with the data
 export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
@@ -12,57 +12,49 @@ export interface IStorage {
   getRecentResumeAnalyses(limit: number): Promise<ResumeAnalysis[]>;
 }
 
-export class MemStorage implements IStorage {
-  private users: Map<number, User>;
-  private resumeAnalyses: Map<number, ResumeAnalysis>;
-  private currentUserId: number;
-  private currentResumeAnalysisId: number;
-
-  constructor() {
-    this.users = new Map();
-    this.resumeAnalyses = new Map();
-    this.currentUserId = 1;
-    this.currentResumeAnalysisId = 1;
-  }
-
+// DatabaseStorage implements the IStorage interface using the PostgreSQL database
+export class DatabaseStorage implements IStorage {
   async getUser(id: number): Promise<User | undefined> {
-    return this.users.get(id);
+    const [user] = await db.select().from(users).where(eq(users.id, id));
+    return user;
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
+    const [user] = await db.select().from(users).where(eq(users.username, username));
+    return user;
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    const id = this.currentUserId++;
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
+    const [user] = await db
+      .insert(users)
+      .values(insertUser)
+      .returning();
     return user;
   }
 
   async createResumeAnalysis(insertAnalysis: InsertResumeAnalysis): Promise<ResumeAnalysis> {
-    const id = this.currentResumeAnalysisId++;
-    const analysis: ResumeAnalysis = { 
-      ...insertAnalysis, 
-      id, 
-      createdAt: new Date()
-    };
-    this.resumeAnalyses.set(id, analysis);
+    const [analysis] = await db
+      .insert(resumeAnalysis)
+      .values(insertAnalysis)
+      .returning();
     return analysis;
   }
 
   async getResumeAnalysis(id: number): Promise<ResumeAnalysis | undefined> {
-    return this.resumeAnalyses.get(id);
+    const [analysis] = await db
+      .select()
+      .from(resumeAnalysis)
+      .where(eq(resumeAnalysis.id, id));
+    return analysis;
   }
 
   async getRecentResumeAnalyses(limit: number): Promise<ResumeAnalysis[]> {
-    const analyses = Array.from(this.resumeAnalyses.values());
-    return analyses
-      .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
-      .slice(0, limit);
+    return await db
+      .select()
+      .from(resumeAnalysis)
+      .orderBy(desc(resumeAnalysis.createdAt))
+      .limit(limit);
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();
