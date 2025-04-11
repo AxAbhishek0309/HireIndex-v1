@@ -21,16 +21,16 @@ export const Footer: React.FC = () => {
               Helping job seekers improve their resumes and increase their chances of landing interviews in today's competitive job market.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-white">
+              <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="text-gray-300 hover:text-white">
+              <a href="https://www.twitter.com/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">
                 <Twitter size={20} />
               </a>
-              <a href="#" className="text-gray-300 hover:text-white">
+              <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">
                 <Linkedin size={20} />
               </a>
-              <a href="#" className="text-gray-300 hover:text-white">
+              <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">
                 <Instagram size={20} />
               </a>
             </div>
@@ -40,10 +40,10 @@ export const Footer: React.FC = () => {
             <h3 className="text-lg font-semibold mb-4">Services</h3>
             <ul className="space-y-3">
               <li><Link href="/resume-analyzer" className="text-gray-300 hover:text-white">Resume Analyzer</Link></li>
-              <li><Link href="/" className="text-gray-300 hover:text-white">ATS Optimization</Link></li>
-              <li><Link href="/" className="text-gray-300 hover:text-white">Career Resources</Link></li>
-              <li><Link href="/" className="text-gray-300 hover:text-white">Resume Templates</Link></li>
-              <li><Link href="/" className="text-gray-300 hover:text-white">Career Coaching</Link></li>
+              <li><a href="https://www.jobscan.co/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">ATS Optimization</a></li>
+              <li><Link href="/resources" className="text-gray-300 hover:text-white">Career Resources</Link></li>
+              <li><a href="https://www.canva.com/resumes/templates/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">Resume Templates</a></li>
+              <li><a href="https://www.indeed.com/career-advice" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">Career Coaching</a></li>
             </ul>
           </div>
           
@@ -51,33 +51,22 @@ export const Footer: React.FC = () => {
             <h3 className="text-lg font-semibold mb-4">Company</h3>
             <ul className="space-y-3">
               <li><Link href="/about" className="text-gray-300 hover:text-white">About Us</Link></li>
-              <li><Link href="/" className="text-gray-300 hover:text-white">Our Team</Link></li>
-              <li><Link href="/" className="text-gray-300 hover:text-white">Testimonials</Link></li>
-              <li><Link href="/" className="text-gray-300 hover:text-white">Blog</Link></li>
-              <li><Link href="/" className="text-gray-300 hover:text-white">Contact Us</Link></li>
+              <li><Link href="/about" className="text-gray-300 hover:text-white">Our Team</Link></li>
+              <li><a href="https://www.trustpilot.com/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">Testimonials</a></li>
+              <li><a href="https://medium.com/career-advice" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">Blog</a></li>
+              <li><a href="mailto:contact@resumeanalyzer.com" className="text-gray-300 hover:text-white">Contact Us</a></li>
             </ul>
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold mb-4">Subscribe</h3>
-            <p className="text-gray-300 mb-4">
-              Stay updated with the latest job search tips and career resources.
-            </p>
-            <form className="mb-4">
-              <div className="flex">
-                <Input 
-                  type="email" 
-                  placeholder="Your email address" 
-                  className="bg-gray-700 text-white rounded-l-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-                <Button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white rounded-l-none">
-                  <Send size={16} />
-                </Button>
-              </div>
-            </form>
-            <p className="text-gray-400 text-sm">
-              We respect your privacy. Unsubscribe at any time.
-            </p>
+            <h3 className="text-lg font-semibold mb-4">Resources</h3>
+            <ul className="space-y-3">
+              <li><a href="https://www.themuse.com/advice" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">Blog Articles</a></li>
+              <li><a href="https://www.indeed.com/career-advice/resumes-cover-letters" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">Resume Tips</a></li>
+              <li><a href="https://www.glassdoor.com/blog/interview-questions-and-answers/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">Interview Prep</a></li>
+              <li><a href="https://www.linkedin.com/learning/topics/career-development" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">Career Guides</a></li>
+              <li><a href="https://www.monster.com/career-advice/job-search" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">Job Search Tools</a></li>
+            </ul>
           </div>
         </div>
         
@@ -86,9 +75,9 @@ export const Footer: React.FC = () => {
             &copy; {new Date().getFullYear()} ResumeCraft. All rights reserved.
           </p>
           <div className="mt-4 md:mt-0 flex space-x-6 text-sm text-gray-400">
-            <Link href="/" className="hover:text-white">Privacy Policy</Link>
-            <Link href="/" className="hover:text-white">Terms of Service</Link>
-            <Link href="/" className="hover:text-white">Cookies Policy</Link>
+            <a href="https://www.privacypolicygenerator.info/" target="_blank" rel="noopener noreferrer" className="hover:text-white">Privacy Policy</a>
+            <a href="https://www.termsandconditionsgenerator.com/" target="_blank" rel="noopener noreferrer" className="hover:text-white">Terms of Service</a>
+            <a href="https://www.cookiepolicygenerator.com/" target="_blank" rel="noopener noreferrer" className="hover:text-white">Cookies Policy</a>
           </div>
         </div>
       </div>

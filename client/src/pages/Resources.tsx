@@ -34,13 +34,13 @@ const Resources: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeFilter, setActiveFilter] = useState('all');
 
-  // Sample resources data
+  // Sample resources data with actual working external links
   const resourcesData: ResourceItem[] = [
     {
       id: 1,
       title: "Resume Writing Best Practices for 2024",
       description: "Learn the latest trends and best practices for creating an effective resume that stands out to both recruiters and ATS systems.",
-      url: "https://example.com/resume-best-practices",
+      url: "https://www.indeed.com/career-advice/resumes-cover-letters/best-resume-format",
       type: "article",
       tags: ["resume writing", "best practices", "ATS"],
       category: "guides",
@@ -50,7 +50,7 @@ const Resources: React.FC = () => {
       id: 2,
       title: "Professional Resume Template",
       description: "A clean, professional resume template optimized for ATS with proper formatting and sections.",
-      url: "https://example.com/professional-template",
+      url: "https://www.canva.com/resumes/templates/professional/",
       type: "template",
       tags: ["template", "professional", "ATS-friendly"],
       category: "templates"
@@ -59,7 +59,7 @@ const Resources: React.FC = () => {
       id: 3,
       title: "How to Write Achievement-Based Bullet Points",
       description: "Tutorial on creating powerful achievement-based bullet points that showcase your impact.",
-      url: "https://example.com/achievement-bullets",
+      url: "https://www.youtube.com/watch?v=J3ko5MySuY8",
       type: "video",
       tags: ["bullet points", "achievements", "impact"],
       category: "tutorials"
@@ -68,7 +68,7 @@ const Resources: React.FC = () => {
       id: 4,
       title: "ATS Keywords Checker",
       description: "Tool to check if your resume contains the right keywords for your target job posting.",
-      url: "https://example.com/keywords-checker",
+      url: "https://www.jobscan.co/",
       type: "tool",
       tags: ["keywords", "ATS", "optimization"],
       category: "tools",
@@ -78,7 +78,7 @@ const Resources: React.FC = () => {
       id: 5,
       title: "Resume Action Verbs List",
       description: "Comprehensive list of powerful action verbs to make your resume more dynamic and engaging.",
-      url: "https://example.com/action-verbs",
+      url: "https://www.themuse.com/advice/185-powerful-verbs-that-will-make-your-resume-awesome",
       type: "article",
       tags: ["action verbs", "writing", "language"],
       category: "guides"
@@ -87,7 +87,7 @@ const Resources: React.FC = () => {
       id: 6,
       title: "Technical Skills Resume Template",
       description: "Resume template specifically designed for technical roles with appropriate sections for skills and projects.",
-      url: "https://example.com/tech-template",
+      url: "https://www.overleaf.com/latex/templates/tagged/cv",
       type: "template",
       tags: ["template", "technical", "IT"],
       category: "templates"
@@ -96,7 +96,7 @@ const Resources: React.FC = () => {
       id: 7,
       title: "Resume Formatting Tutorial",
       description: "Video guide on properly formatting your resume for maximum readability and ATS compatibility.",
-      url: "https://example.com/formatting-tutorial",
+      url: "https://www.youtube.com/watch?v=Tt08KmFfIYQ",
       type: "video",
       tags: ["formatting", "design", "layout"],
       category: "tutorials"
@@ -105,7 +105,7 @@ const Resources: React.FC = () => {
       id: 8,
       title: "Cover Letter Generator",
       description: "AI-powered tool to help you create customized cover letters for different job applications.",
-      url: "https://example.com/cover-letter-generator",
+      url: "https://resumeworded.com/cover-letter-generator",
       type: "tool",
       tags: ["cover letter", "generator", "customization"],
       category: "tools"
@@ -114,7 +114,7 @@ const Resources: React.FC = () => {
       id: 9,
       title: "Industry-Specific Resume Examples",
       description: "Collection of sample resumes for various industries with annotations explaining effective elements.",
-      url: "https://example.com/industry-examples",
+      url: "https://www.resume.com/career-advice/resumes/resume-examples-by-industry/",
       type: "article",
       tags: ["examples", "industry-specific", "samples"],
       category: "guides",
@@ -124,7 +124,7 @@ const Resources: React.FC = () => {
       id: 10,
       title: "Entry-Level Resume Template",
       description: "Resume template designed for recent graduates and those with limited work experience.",
-      url: "https://example.com/entry-level-template",
+      url: "https://novoresume.com/resume-templates/college-student",
       type: "template",
       tags: ["template", "entry-level", "graduates"],
       category: "templates"
@@ -133,7 +133,7 @@ const Resources: React.FC = () => {
       id: 11,
       title: "Handling Employment Gaps in Your Resume",
       description: "Expert advice on how to address employment gaps in your resume effectively.",
-      url: "https://example.com/employment-gaps",
+      url: "https://www.youtube.com/watch?v=_0fjKarINXE",
       type: "video",
       tags: ["employment gaps", "challenges", "explanations"],
       category: "tutorials"
@@ -142,7 +142,7 @@ const Resources: React.FC = () => {
       id: 12,
       title: "LinkedIn Profile Optimizer",
       description: "Tool to analyze and improve your LinkedIn profile to complement your resume.",
-      url: "https://example.com/linkedin-optimizer",
+      url: "https://www.linkedin.com/learning/learning-linkedin-for-students",
       type: "tool",
       tags: ["LinkedIn", "social media", "networking"],
       category: "tools"
