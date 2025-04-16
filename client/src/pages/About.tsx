@@ -81,7 +81,7 @@ const About: React.FC = () => {
               <h2 className="text-3xl font-bold mb-6 text-gray-800">Our Story</h2>
               <div className="space-y-4">
                 <p className="text-gray-600">
-                  ResumeCraft was founded in 2020 with a clear vision: to level the playing field for job seekers competing in an increasingly automated recruitment landscape.
+                  ResumeCraft was founded in 2025 with a clear vision: to level the playing field for job seekers competing in an increasingly automated recruitment landscape.
                 </p>
                 <p className="text-gray-600">
                   After witnessing countless qualified candidates being rejected by Applicant Tracking Systems (ATS) simply because their resumes weren't properly optimized, our founder Adit Katiyar decided to create a solution.
@@ -160,7 +160,7 @@ const About: React.FC = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto max-w-5xl">
             {teamMembers.map((member) => (
               <div key={member.id} className="text-center">
                 <div className="mb-4 relative">
