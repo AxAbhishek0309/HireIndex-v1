@@ -36,14 +36,14 @@ const About: React.FC = () => {
       name: "Abhishek Tiwari",
       role: "CTO",
       bio: "AI specialist focused on natural language processing and resume parsing technologies.",
-      imageUrl: "/src/assets/abhishek.png"
+      imageUrl: "/assets/abhishek.png"
     },
     {
       id: 3,
       name: "Sneha Dhanuka",
       role: "Head of Career Services",
       bio: "Former HR director specializing in recruitment strategies and talent acquisition.",
-      imageUrl: "/src/assets/sneha.png"
+      imageUrl: "/assets/sneha.png"
     }
   ];
 
@@ -84,7 +84,7 @@ const About: React.FC = () => {
                   ResumeCraft was founded in 2020 with a clear vision: to level the playing field for job seekers competing in an increasingly automated recruitment landscape.
                 </p>
                 <p className="text-gray-600">
-                  After witnessing countless qualified candidates being rejected by Applicant Tracking Systems (ATS) simply because their resumes weren't properly optimized, our founder Sarah Johnson decided to create a solution.
+                  After witnessing countless qualified candidates being rejected by Applicant Tracking Systems (ATS) simply because their resumes weren't properly optimized, our founder Adit Katiyar decided to create a solution.
                 </p>
                 <p className="text-gray-600">
                   What started as a simple resume review service has evolved into a comprehensive AI-powered platform that has helped over 100,000 job seekers land interviews and secure their dream jobs.
@@ -249,7 +249,7 @@ const About: React.FC = () => {
                 <p className="text-gray-600 mb-4 italic">
                   "The ATS analyzer showed me exactly where my resume was falling short. I implemented the suggestions and my callback rate increased dramatically!"
                 </p>
-                <div className="font-medium">Jennifer T., Marketing Manager</div>
+                <div className="font-medium">Priya Malhotra, Marketing Manager</div>
               </div>
             </div>
             
@@ -261,7 +261,7 @@ const About: React.FC = () => {
                 <p className="text-gray-600 mb-4 italic">
                   "As a career changer, I struggled to present my transferable skills effectively. ResumeCraft helped me highlight my relevant experience and I transitioned successfully."
                 </p>
-                <div className="font-medium">Robert K., Financial Analyst</div>
+                <div className="font-medium">Vikram Mehta, Financial Analyst</div>
               </div>
             </div>
           </div>
