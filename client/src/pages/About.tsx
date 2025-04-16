@@ -22,35 +22,28 @@ interface TeamMember {
 }
 
 const About: React.FC = () => {
-  // Sample team members data
+  // Team members data
   const teamMembers: TeamMember[] = [
     {
       id: 1,
-      name: "Sarah Johnson",
+      name: "Adit Katiyar",
       role: "CEO & Founder",
       bio: "Former technical recruiter with 10+ years of experience helping candidates optimize their job applications.",
-      imageUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80"
+      imageUrl: "/assets/adit.jpg"
     },
     {
       id: 2,
-      name: "Michael Chen",
+      name: "Abhishek Tiwari",
       role: "CTO",
       bio: "AI specialist focused on natural language processing and resume parsing technologies.",
-      imageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80"
+      imageUrl: "/src/assets/abhishek.png"
     },
     {
       id: 3,
-      name: "Jamie Rodriguez",
+      name: "Sneha Dhanuka",
       role: "Head of Career Services",
       bio: "Former HR director specializing in recruitment strategies and talent acquisition.",
-      imageUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80"
-    },
-    {
-      id: 4,
-      name: "Alex Thompson",
-      role: "Lead Developer",
-      bio: "Full-stack developer with expertise in building AI-powered tools for career advancement.",
-      imageUrl: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80"
+      imageUrl: "/src/assets/sneha.png"
     }
   ];
 
@@ -244,7 +237,7 @@ const About: React.FC = () => {
                 <p className="text-gray-600 mb-4 italic">
                   "After 6 months of silence from employers, I used ResumeCraft to optimize my resume. Within two weeks I had three interviews and landed my dream job in tech!"
                 </p>
-                <div className="font-medium">Daniel R., Software Developer</div>
+                <div className="font-medium">Rajesh Sharma, Software Developer</div>
               </div>
             </div>
             
