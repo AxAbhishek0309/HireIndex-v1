@@ -18,7 +18,8 @@ export interface ResumeAnalysisResult {
 
 import fetch from "node-fetch";
 
-const GEMINI_API_KEY = "AIzaSyBZQ-7RwRvUeL-9Jlo-dvXSE2juo4EqPjw";
+
+const GEMINI_API_KEY = "c";
 const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=" + GEMINI_API_KEY;
 const GEMINI_TIMEOUT_MS = 30000; // 30 seconds
 
@@ -98,6 +99,11 @@ function fillSectionDefaults(result: ResumeAnalysisResult): ResumeAnalysisResult
 }
 
 export async function analyzeResumeWithGemini(text: string): Promise<ResumeAnalysisResult> {
+  if (!text || !text.trim()) {
+    throw new Error("Resume text is empty. Cannot analyze an empty document.");
+  }
+  console.log("Extracted resume text:", text.slice(0, 500)); // Log first 500 chars
+
   const prompt = `${SYSTEM_PROMPT}\n\nResume:\n${text}`;
 
   const body = {
@@ -114,6 +120,8 @@ export async function analyzeResumeWithGemini(text: string): Promise<ResumeAnaly
       topK: 1
     }
   };
+
+  console.log("Gemini request body:", JSON.stringify(body, null, 2));
 
   // Timeout logic
   const controller = new AbortController();
