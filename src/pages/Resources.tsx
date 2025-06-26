@@ -280,23 +280,34 @@ const Resources: React.FC = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredResources.map(resource => (
-              <Card key={resource.id} className={`overflow-hidden transition-all duration-300 hover:shadow-lg ${resource.featured ? 'border-blue-200 bg-blue-50' : ''}`}>
+              <Card key={resource.id} className={`overflow-hidden transition-all duration-300 hover:shadow-lg 
+                ${resource.featured ? 'border-blue-200 bg-blue-50 dark:bg-blue-950 dark:border-blue-400' : 'bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800'}`}>
                 <CardHeader className="pb-4">
                   <div className="flex justify-between items-start">
-                    <div className={`p-2 rounded-full ${resource.type === 'article' ? 'bg-blue-100' : resource.type === 'template' ? 'bg-green-100' : resource.type === 'video' ? 'bg-red-100' : 'bg-purple-100'}`}>
+                    <div className={`p-2 rounded-full 
+                      ${resource.type === 'article' ? 'bg-blue-100 dark:bg-blue-900' : ''}
+                      ${resource.type === 'template' ? 'bg-green-100 dark:bg-green-900' : ''}
+                      ${resource.type === 'video' ? 'bg-red-100 dark:bg-red-900' : ''}
+                      ${resource.type === 'tool' ? 'bg-purple-100 dark:bg-purple-900' : ''}
+                    `}>
                       {getResourceIcon(resource.type)}
                     </div>
-                    <div className={`text-xs font-medium px-2.5 py-1 rounded-full ${getTypeBadgeClass(resource.type)}`}>
+                    <div className={`text-xs font-medium px-2.5 py-1 rounded-full 
+                      ${resource.type === 'article' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' : ''}
+                      ${resource.type === 'template' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' : ''}
+                      ${resource.type === 'video' ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200' : ''}
+                      ${resource.type === 'tool' ? 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200' : ''}
+                    `}>
                       {resource.type.charAt(0).toUpperCase() + resource.type.slice(1)}
                     </div>
                   </div>
-                  <CardTitle className="mt-4 text-xl">{resource.title}</CardTitle>
-                  <CardDescription className="line-clamp-2">{resource.description}</CardDescription>
+                  <CardTitle className="mt-4 text-xl text-gray-900 dark:text-gray-100">{resource.title}</CardTitle>
+                  <CardDescription className="line-clamp-2 text-gray-600 dark:text-gray-300">{resource.description}</CardDescription>
                 </CardHeader>
                 <CardContent className="pb-4">
                   <div className="flex flex-wrap gap-2">
                     {resource.tags.map((tag, index) => (
-                      <span key={index} className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">
+                      <span key={index} className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs px-2 py-1 rounded-full">
                         {tag}
                       </span>
                     ))}
@@ -309,7 +320,7 @@ const Resources: React.FC = () => {
                     rel="noopener noreferrer" 
                     className="w-full"
                   >
-                    <Button variant="outline" className="w-full">
+                    <Button variant="outline" className="w-full bg-black dark:bg-white text-white dark:text-black border-black dark:border-white">
                       View Resource <ExternalLink className="ml-2 h-4 w-4" />
                     </Button>
                   </a>

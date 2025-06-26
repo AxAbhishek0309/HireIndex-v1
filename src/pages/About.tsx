@@ -9,7 +9,10 @@ import {
   Briefcase,
   Mail,
   MessageCircle,
-  ChevronRight
+  ChevronRight,
+  Linkedin,
+  Github,
+  Twitter
 } from 'lucide-react';
 
 // Team member interface
@@ -19,31 +22,33 @@ interface TeamMember {
   role: string;
   bio: string;
   imageUrl: string;
+  linkedin?: string;
+  github?: string;
+  twitter?: string;
 }
 
 const About: React.FC = () => {
   // Team members data
   const teamMembers: TeamMember[] = [
     {
-      id: 1,
-      name: "Adit Katiyar",
-      role: "CEO & Founder",
-      bio: "Former technical recruiter with 10+ years of experience helping candidates optimize their job applications.",
-      imageUrl: "/assets/adit.jpg"
-    },
-    {
       id: 2,
       name: "Abhishek Tiwari",
-      role: "CTO",
+      role: "AI/MLOPS/WEBD",
       bio: "AI specialist focused on natural language processing and resume parsing technologies.",
-      imageUrl: "/assets/abhishek.png"
+      imageUrl: "/assets/abhishek.png",
+      linkedin: "https://www.linkedin.com/in/abhishek-tiwari-03ax/",
+      github: "https://github.com/AxAbhishek0309",
+      twitter: "https://x.com/axabhishek_0309"
     },
     {
-      id: 3,
-      name: "Sneha Dhanuka",
-      role: "Head of Career Services",
-      bio: "Former HR director specializing in recruitment strategies and talent acquisition.",
-      imageUrl: "/assets/sneha.png"
+      id: 1,
+      name: "Adit Katiyar",
+      role: "ML/WEBD",
+      bio: "Former technical recruiter with 10+ years of experience helping candidates optimize their job applications.",
+      imageUrl: "/assets/adit.jpg",
+      linkedin: "https://www.linkedin.com/in/adit-katiyar-0863692b9/",
+      github: "https://github.com/Adi101-coder",
+      twitter: "https://x.com/adit_katiyar"
     }
   ];
 
@@ -53,7 +58,7 @@ const About: React.FC = () => {
       <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            About ResumeCraft
+            About HireIndex
           </h1>
           <p className="text-xl max-w-3xl mx-auto mb-10 text-blue-100">
             We're on a mission to help job seekers create resumes that stand out, get past ATS systems, and land more interviews.
@@ -81,10 +86,10 @@ const About: React.FC = () => {
               <h2 className="text-3xl font-bold mb-6 text-gray-800">Our Story</h2>
               <div className="space-y-4">
                 <p className="text-gray-600">
-                  ResumeCraft was founded in 2025 with a clear vision: to level the playing field for job seekers competing in an increasingly automated recruitment landscape.
+                  HireIndex was founded in 2025 with a clear vision: to level the playing field for job seekers competing in an increasingly automated recruitment landscape.
                 </p>
                 <p className="text-gray-600">
-                  After witnessing countless qualified candidates being rejected by Applicant Tracking Systems (ATS) simply because their resumes weren't properly optimized, our founder Adit Katiyar decided to create a solution.
+                  After witnessing countless qualified candidates being rejected by Applicant Tracking Systems (ATS) simply because their resumes weren't properly optimized, our founders Adit Katiyar and Abhishek Tiwari decided to create a solution.
                 </p>
                 <p className="text-gray-600">
                   What started as a simple resume review service has evolved into a comprehensive AI-powered platform that has helped over 100,000 job seekers land interviews and secure their dream jobs.
@@ -153,31 +158,28 @@ const About: React.FC = () => {
       {/* Team Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4 text-gray-800">Meet Our Team</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Our diverse team of recruitment experts, AI specialists, and career coaches work together to provide you with the best resume tools and resources.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto max-w-5xl">
+          <h2 className="text-3xl font-bold mb-6 text-center">Meet Our Team</h2>
+          <p className="text-lg text-gray-600 mb-12 text-center">
+            Our diverse team of recruitment experts, AI specialists, and career coaches work together to provide you with the best resume tools and resources.
+          </p>
+          <div className="flex flex-wrap justify-center gap-12">
             {teamMembers.map((member) => (
-              <div key={member.id} className="text-center">
-                <div className="mb-4 relative">
-                  <div className="rounded-full overflow-hidden h-48 w-48 mx-auto">
-                    <img 
-                      src={member.imageUrl} 
-                      alt={member.name} 
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                  <div className="absolute -bottom-2 -right-2 bg-blue-600 text-white p-2 rounded-full">
-                    <Briefcase className="h-5 w-5" />
-                  </div>
+              <div key={member.id} className="flex flex-col items-center max-w-xs w-full">
+                <img src={member.imageUrl} alt={member.name} className="w-56 h-56 object-cover rounded-full mb-4 shadow-lg" />
+                <h3 className="text-2xl font-semibold mb-1">{member.name}</h3>
+                <div className="text-blue-600 font-medium mb-2">{member.role}</div>
+                <p className="text-gray-600 text-center mb-4 min-h-[56px] flex items-center justify-center">{member.bio}</p>
+                <div className="flex justify-center gap-6 mb-2">
+                  <a href={member.linkedin || '#'} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-blue-600 transition">
+                    <Linkedin size={22} />
+                  </a>
+                  <a href={member.github || '#'} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-900 transition">
+                    <Github size={22} />
+                  </a>
+                  <a href={member.twitter || '#'} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-blue-400 transition">
+                    <Twitter size={22} />
+                  </a>
                 </div>
-                <h3 className="text-xl font-semibold mb-1">{member.name}</h3>
-                <div className="text-blue-600 font-medium mb-3">{member.role}</div>
-                <p className="text-gray-600">{member.bio}</p>
               </div>
             ))}
           </div>
@@ -224,7 +226,7 @@ const About: React.FC = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4 text-gray-800">Success Stories</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Read about how ResumeCraft has helped job seekers transform their careers.
+              Read about how HireIndex has helped job seekers transform their careers.
             </p>
           </div>
           
@@ -235,7 +237,7 @@ const About: React.FC = () => {
               </div>
               <div className="mt-4">
                 <p className="text-gray-600 mb-4 italic">
-                  "After 6 months of silence from employers, I used ResumeCraft to optimize my resume. Within two weeks I had three interviews and landed my dream job in tech!"
+                  "After 6 months of silence from employers, I used HireIndex to optimize my resume. Within two weeks I had three interviews and landed my dream job in tech!"
                 </p>
                 <div className="font-medium">Rajesh Sharma, Software Developer</div>
               </div>
@@ -259,7 +261,7 @@ const About: React.FC = () => {
               </div>
               <div className="mt-4">
                 <p className="text-gray-600 mb-4 italic">
-                  "As a career changer, I struggled to present my transferable skills effectively. ResumeCraft helped me highlight my relevant experience and I transitioned successfully."
+                  "As a career changer, I struggled to present my transferable skills effectively. HireIndex helped me highlight my relevant experience and I transitioned successfully."
                 </p>
                 <div className="font-medium">Vikram Mehta, Financial Analyst</div>
               </div>

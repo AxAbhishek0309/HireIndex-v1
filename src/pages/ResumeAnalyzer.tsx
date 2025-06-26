@@ -109,10 +109,10 @@ const ResumeAnalyzer: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 bg-white dark:bg-gray-950 rounded-xl shadow-lg">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-800">Resume ATS Checker</h1>
-        <p className="text-gray-600 mt-1">
+        <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-100">Resume ATS Checker</h1>
+        <p className="text-gray-600 dark:text-gray-300 mt-1">
           Upload your resume to check its compatibility with Applicant Tracking Systems
         </p>
       </div>
@@ -128,40 +128,40 @@ const ResumeAnalyzer: React.FC = () => {
         
         <div className="lg:col-span-7">
           {analyzeResumeMutation.isPending && (
-            <Card>
+            <Card className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
               <CardContent className="py-8">
                 <div className="flex flex-col items-center justify-center">
                   <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-500 mb-4"></div>
-                  <h3 className="text-lg font-semibold text-gray-700 mb-2">Analyzing Your Resume</h3>
-                  <div className="w-full max-w-md bg-gray-200 rounded-full h-2.5 mb-4">
+                  <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-100 mb-2">Analyzing Your Resume</h3>
+                  <div className="w-full max-w-md bg-gray-200 dark:bg-gray-800 rounded-full h-2.5 mb-4">
                     <div className="bg-blue-500 h-2.5 rounded-full animate-pulse" style={{ width: '70%' }}></div>
                   </div>
-                  <p className="text-gray-500">We're checking your resume against ATS requirements...</p>
+                  <p className="text-gray-500 dark:text-gray-300">We're checking your resume against ATS requirements...</p>
                 </div>
               </CardContent>
             </Card>
           )}
           
           {!analyzeResumeMutation.isPending && analysis && (
-            <Card>
+            <Card className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
               <CardContent className="p-6">
-                <div className="mb-6 pb-4 border-b border-gray-200">
+                <div className="mb-6 pb-4 border-b border-gray-200 dark:border-gray-800">
                   <div className="flex justify-between items-center mb-4">
-                    <h3 className="text-lg font-semibold text-gray-800">
+                    <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
                       {file?.name} - ATS Score
                     </h3>
                     <div className="flex space-x-2">
                       <Button 
                         onClick={handleExport}
                         variant="outline" 
-                        className="text-blue-500 border-blue-500 hover:bg-blue-50 text-sm"
+                        className="text-blue-500 border-blue-500 hover:bg-blue-50 dark:hover:bg-gray-800 text-sm"
                       >
                         <Download className="h-4 w-4 mr-1" /> Export
                       </Button>
                       <Button 
                         onClick={handleReanalyze}
                         variant="outline" 
-                        className="text-gray-500 border-gray-300 hover:bg-gray-50 text-sm"
+                        className="text-gray-500 border-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 text-sm"
                       >
                         <RefreshCw className="h-4 w-4 mr-1" /> Re-analyze
                       </Button>
@@ -171,11 +171,11 @@ const ResumeAnalyzer: React.FC = () => {
                   <div className="flex flex-col md:flex-row md:items-center">
                     <div className="md:w-1/3 mb-4 md:mb-0">
                       <div className="text-center p-4">
-                        <div className="text-5xl font-bold mb-2">
+                        <div className="text-5xl font-bold mb-2 text-gray-900 dark:text-gray-100">
                           <span>{analysis.overallScore}</span>
-                          <span className="text-2xl text-gray-500">/100</span>
+                          <span className="text-2xl text-gray-500 dark:text-gray-300">/100</span>
                         </div>
-                        <div className="text-sm font-medium text-gray-500">Overall ATS Score</div>
+                        <div className="text-sm font-medium text-gray-500 dark:text-gray-300">Overall ATS Score</div>
                       </div>
                     </div>
                     
@@ -186,7 +186,7 @@ const ResumeAnalyzer: React.FC = () => {
                           label="Overall Score" 
                         />
                       </div>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-gray-600 dark:text-gray-300">
                         {analysis.overallScore >= 85 ? (
                           "Your resume scores well against ATS systems! Check the detailed analysis for any minor improvements."
                         ) : analysis.overallScore >= 70 ? (
@@ -200,80 +200,80 @@ const ResumeAnalyzer: React.FC = () => {
                 </div>
                 
                 <div>
-                  <h4 className="text-md font-semibold text-gray-800 mb-4">Detailed Analysis</h4>
+                  <h4 className="text-md font-semibold text-gray-800 dark:text-gray-100 mb-4">Detailed Analysis</h4>
                   
                   {/* Category: Keywords & Phrases */}
-                  <div className="mb-4 pb-4 border-b border-gray-100">
+                  <div className="mb-4 pb-4 border-b border-gray-100 dark:border-gray-800">
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
                       <div className="flex items-center mb-2 sm:mb-0">
                         <Key className="text-blue-500 mr-3 h-5 w-5" />
-                        <span className="text-sm font-medium text-gray-700">Keywords & Phrases</span>
+                        <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Keywords & Phrases</span>
                       </div>
                       <div className="flex items-center">
-                        <span className="text-sm font-medium text-gray-700 mr-2">{analysis.keywordsScore}</span>
+                        <span className="text-sm font-medium text-gray-700 dark:text-gray-300 mr-2">{analysis.keywordsScore}</span>
                         <div className="w-32">
                           <ProgressBar score={analysis.keywordsScore} showValue={false} size="sm" />
                         </div>
                       </div>
                     </div>
-                    <p className="text-sm text-gray-600 ml-8">
+                    <p className="text-sm text-gray-600 dark:text-gray-300 ml-8">
                       {analysis.feedback.keywords}
                     </p>
                   </div>
                   
                   {/* Category: Work Experience */}
-                  <div className="mb-4 pb-4 border-b border-gray-100">
+                  <div className="mb-4 pb-4 border-b border-gray-100 dark:border-gray-800">
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
                       <div className="flex items-center mb-2 sm:mb-0">
                         <Briefcase className="text-blue-500 mr-3 h-5 w-5" />
-                        <span className="text-sm font-medium text-gray-700">Work Experience</span>
+                        <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Work Experience</span>
                       </div>
                       <div className="flex items-center">
-                        <span className="text-sm font-medium text-gray-700 mr-2">{analysis.experienceScore}</span>
+                        <span className="text-sm font-medium text-gray-700 dark:text-gray-300 mr-2">{analysis.experienceScore}</span>
                         <div className="w-32">
                           <ProgressBar score={analysis.experienceScore} showValue={false} size="sm" />
                         </div>
                       </div>
                     </div>
-                    <p className="text-sm text-gray-600 ml-8">
+                    <p className="text-sm text-gray-600 dark:text-gray-300 ml-8">
                       {analysis.feedback.experience}
                     </p>
                   </div>
                   
                   {/* Category: Skills Match */}
-                  <div className="mb-4 pb-4 border-b border-gray-100">
+                  <div className="mb-4 pb-4 border-b border-gray-100 dark:border-gray-800">
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
                       <div className="flex items-center mb-2 sm:mb-0">
                         <Wrench className="text-blue-500 mr-3 h-5 w-5" />
-                        <span className="text-sm font-medium text-gray-700">Skills Match</span>
+                        <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Skills Match</span>
                       </div>
                       <div className="flex items-center">
-                        <span className="text-sm font-medium text-gray-700 mr-2">{analysis.skillsScore}</span>
+                        <span className="text-sm font-medium text-gray-700 dark:text-gray-300 mr-2">{analysis.skillsScore}</span>
                         <div className="w-32">
                           <ProgressBar score={analysis.skillsScore} showValue={false} size="sm" />
                         </div>
                       </div>
                     </div>
-                    <p className="text-sm text-gray-600 ml-8">
+                    <p className="text-sm text-gray-600 dark:text-gray-300 ml-8">
                       {analysis.feedback.skills}
                     </p>
                   </div>
                   
                   {/* Category: Education */}
-                  <div className="mb-4 pb-4 border-b border-gray-100">
+                  <div className="mb-4 pb-4 border-b border-gray-100 dark:border-gray-800">
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
                       <div className="flex items-center mb-2 sm:mb-0">
                         <GraduationCap className="text-blue-500 mr-3 h-5 w-5" />
-                        <span className="text-sm font-medium text-gray-700">Education</span>
+                        <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Education</span>
                       </div>
                       <div className="flex items-center">
-                        <span className="text-sm font-medium text-gray-700 mr-2">{analysis.educationScore}</span>
+                        <span className="text-sm font-medium text-gray-700 dark:text-gray-300 mr-2">{analysis.educationScore}</span>
                         <div className="w-32">
                           <ProgressBar score={analysis.educationScore} showValue={false} size="sm" />
                         </div>
                       </div>
                     </div>
-                    <p className="text-sm text-gray-600 ml-8">
+                    <p className="text-sm text-gray-600 dark:text-gray-300 ml-8">
                       {analysis.feedback.education}
                     </p>
                   </div>
@@ -283,23 +283,23 @@ const ResumeAnalyzer: React.FC = () => {
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
                       <div className="flex items-center mb-2 sm:mb-0">
                         <FileText className="text-blue-500 mr-3 h-5 w-5" />
-                        <span className="text-sm font-medium text-gray-700">Formatting & Structure</span>
+                        <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Formatting & Structure</span>
                       </div>
                       <div className="flex items-center">
-                        <span className="text-sm font-medium text-gray-700 mr-2">{analysis.formattingScore}</span>
+                        <span className="text-sm font-medium text-gray-700 dark:text-gray-300 mr-2">{analysis.formattingScore}</span>
                         <div className="w-32">
                           <ProgressBar score={analysis.formattingScore} showValue={false} size="sm" />
                         </div>
                       </div>
                     </div>
-                    <p className="text-sm text-gray-600 ml-8">
+                    <p className="text-sm text-gray-600 dark:text-gray-300 ml-8">
                       {analysis.feedback.formatting}
                     </p>
                   </div>
                   
                   <div className="mt-6 pt-4 border-t border-gray-200">
-                    <h4 className="text-md font-semibold text-gray-800 mb-3">Recommended Actions</h4>
-                    <ul className="ml-5 text-sm text-gray-600 space-y-2">
+                    <h4 className="text-md font-semibold text-gray-800 dark:text-gray-100 mb-3">Recommended Actions</h4>
+                    <ul className="ml-5 text-sm text-gray-600 dark:text-gray-300 space-y-2">
                       {analysis.improvementSuggestions.map((suggestion, index) => (
                         <li key={index} className="flex items-start">
                           <CheckCircle className="text-green-500 mt-1 mr-2 h-4 w-4" />
@@ -326,11 +326,11 @@ const ResumeAnalyzer: React.FC = () => {
           )}
 
           {!analyzeResumeMutation.isPending && !analysis && !file && (
-            <Card>
+            <Card className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
               <CardContent className="p-8 text-center">
                 <FileText className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-lg font-medium text-gray-700 mb-2">No Resume Analyzed Yet</h3>
-                <p className="text-gray-500 mb-6">
+                <h3 className="text-lg font-medium text-gray-700 dark:text-gray-100 mb-2">No Resume Analyzed Yet</h3>
+                <p className="text-gray-500 dark:text-gray-300 mb-6">
                   Upload your resume to get a detailed ATS compatibility analysis and improvement suggestions.
                 </p>
               </CardContent>

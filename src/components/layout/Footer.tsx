@@ -16,7 +16,7 @@ export const Footer: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-xl font-bold mb-4">ResumeCraft</h3>
+            <h3 className="text-xl font-bold mb-4">HireIndex</h3>
             <p className="text-gray-300 mb-4">
               Helping job seekers improve their resumes and increase their chances of landing interviews in today's competitive job market.
             </p>
@@ -72,7 +72,7 @@ export const Footer: React.FC = () => {
         
         <div className="mt-8 pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between">
           <p className="text-gray-400 text-sm">
-            &copy; {new Date().getFullYear()} ResumeCraft. All rights reserved.
+            &copy; {new Date().getFullYear()} HireIndex. All rights reserved.
           </p>
           <div className="mt-4 md:mt-0 flex space-x-6 text-sm text-gray-400">
             <a href="https://www.privacypolicygenerator.info/" target="_blank" rel="noopener noreferrer" className="hover:text-white">Privacy Policy</a>

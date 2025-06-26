@@ -3,7 +3,9 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import multer from "multer";
 import { extractTextFromDocument, isValidFileType } from "./document-parser";
-import { analyzeResume } from "./openai";
+import { isResumeDocument } from "./gemini";
+import { analyzeResumeWithGemini } from "./gemini";
+import crypto from "crypto";
 
 // Configure multer for file uploads (store in memory)
 const upload = multer({
@@ -21,50 +23,83 @@ const upload = multer({
   },
 });
 
+// Extend Express Request type to include optional file property from multer
+interface ResumeRequest extends Request {
+  file?: Express.Multer.File;
+}
+
+// In-memory cache for resume analysis results
+const resumeCache: Record<string, any> = {};
+
 export async function registerRoutes(app: Express): Promise<Server> {
   // API routes for resume analysis
-  app.post("/api/resume/analyze", upload.single("file"), async (req: Request, res: Response) => {
+  app.post("/api/resume/analyze", upload.single("file"), async (req: ResumeRequest, res: Response) => {
     try {
       const file = req.file;
       
+      // Flag if not a resume (PDF or DOCX) - check before any file reading
       if (!file) {
         return res.status(400).json({ message: "No file uploaded" });
       }
+      // Remove file type check - accept all extensions
+      // const allowedMimeTypes = [
+      //   "application/pdf",
+      //   "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      //   "application/msword"
+      // ];
+      // if (!allowedMimeTypes.includes(file.mimetype)) {
+      //   return res.status(400).json({ message: "Please upload a resume file (PDF or DOCX) only." });
+      // }
 
-      // Extract text from the document
+      // Only now extract text from the document
       const text = await extractTextFromDocument(file.buffer, file.mimetype);
       
-      // Analyze the resume using OpenAI
-      const analysisResult = await analyzeResume(text);
-      
-      try {
-        // Try to store the analysis result
-        const analysis = await storage.createResumeAnalysis({
-          filename: file.originalname,
-          fileType: file.mimetype,
-          overallScore: analysisResult.overallScore,
-          keywordsScore: analysisResult.keywordsScore,
-          experienceScore: analysisResult.experienceScore,
-          skillsScore: analysisResult.skillsScore,
-          educationScore: analysisResult.educationScore,
-          formattingScore: analysisResult.formattingScore,
-          feedback: analysisResult.feedback,
-          improvementSuggestions: analysisResult.improvementSuggestions,
-        });
-        
-        return res.status(200).json(analysis);
-      } catch (dbError) {
-        console.error("Database error:", dbError);
-        
-        // If database save fails, still return the analysis result as a fallback
-        return res.status(200).json({
-          id: Date.now(), // Use timestamp as temporary ID
+      // Hash the resume text for caching
+      const hash = crypto.createHash('sha256').update(text).digest('hex');
+      if (resumeCache[hash]) {
+        return res.status(200).json(resumeCache[hash]);
+      }
+
+      // Check if the document is a resume using Gemini
+      const isResume = await isResumeDocument(text);
+      if (!isResume) {
+        const notResumeResult = {
+          id: Date.now(),
           filename: file.originalname,
           fileType: file.mimetype,
           createdAt: new Date().toISOString(),
-          ...analysisResult
-        });
+          overallScore: 0,
+          keywordsScore: 0,
+          experienceScore: 0,
+          skillsScore: 0,
+          educationScore: 0,
+          formattingScore: 0,
+          feedback: {
+            keywords: "This document does not appear to be a resume. Please upload a valid resume (CV) for analysis.",
+            experience: "This document does not appear to be a resume. Please upload a valid resume (CV) for analysis.",
+            skills: "This document does not appear to be a resume. Please upload a valid resume (CV) for analysis.",
+            education: "This document does not appear to be a resume. Please upload a valid resume (CV) for analysis.",
+            formatting: "This document does not appear to be a resume. Please upload a valid resume (CV) for analysis."
+          },
+          improvementSuggestions: [
+            "Please upload a resume or CV document for accurate analysis."
+          ]
+        };
+        resumeCache[hash] = notResumeResult;
+        return res.status(200).json(notResumeResult);
       }
+      
+      // Analyze the resume using Gemini
+      const analysisResult = await analyzeResumeWithGemini(text);
+      const result = {
+        id: Date.now(),
+        filename: file.originalname,
+        fileType: file.mimetype,
+        createdAt: new Date().toISOString(),
+        ...analysisResult
+      };
+      resumeCache[hash] = result;
+      return res.status(200).json(result);
     } catch (error) {
       console.error("Error analyzing resume:", error);
       return res.status(500).json({ 
