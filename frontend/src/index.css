@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  @apply bg-white text-gray-900 dark:bg-[#18181b] dark:text-gray-100;
+  --background: #fff;
+  --foreground: #18181b;
+}
+
+body.dark, html.dark {
+  background: #18181b !important;
+  --background: #18181b;
+  --foreground: #fff;
+}
+
+@layer base {
+  * {
+    /* Removed invalid border-border utility. Use border color classes in your components instead. */
+  }
+
+  body {
+    @apply font-sans antialiased;
+  }
+}
