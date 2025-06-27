@@ -186,6 +186,7 @@ const ChartTooltipContent = React.forwardRef<
           {Array.isArray(payload) && payload.map((item: any, index: number) => {
             const key = `${nameKey || item?.name || item?.dataKey || "value"}`
             const itemConfig = getPayloadConfigFromPayload(config, item, key)
+            // @ts-ignore
             const indicatorColor = color || ((item as any)?.payload?.fill) || (item as any)?.color
 
             return (
@@ -197,6 +198,7 @@ const ChartTooltipContent = React.forwardRef<
                 )}
               >
                 {formatter && item?.value !== undefined && item?.name ? (
+                  // @ts-ignore
                   formatter(item.value, item.name, item, index, item?.payload)
                 ) : (
                   <>
@@ -236,6 +238,7 @@ const ChartTooltipContent = React.forwardRef<
                           {itemConfig?.label || (item as any)?.name}
                         </span>
                       </div>
+                      // @ts-ignore
                       {(item as any)?.value && (
                         <span className="font-mono font-medium tabular-nums text-gray-900 dark:text-gray-100">
                           {(item as any).value.toLocaleString()}
@@ -300,6 +303,7 @@ const ChartLegendContent = React.forwardRef<
                 <div
                   className="h-2 w-2 shrink-0 rounded-[2px]"
                   style={{
+                    // @ts-ignore
                     backgroundColor: (item as any)?.color,
                   }}
                 />
