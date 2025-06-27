@@ -186,7 +186,7 @@ const ChartTooltipContent = React.forwardRef<
           {Array.isArray(payload) && payload.map((item: any, index: number) => {
             const key = `${nameKey || item?.name || item?.dataKey || "value"}`
             const itemConfig = getPayloadConfigFromPayload(config, item, key)
-            const indicatorColor = color || (item && 'payload' in item && item.payload?.fill) || item?.color
+            const indicatorColor = color || ((item as any)?.payload?.fill) || (item as any)?.color
 
             return (
               <div
@@ -233,12 +233,12 @@ const ChartTooltipContent = React.forwardRef<
                       <div className="grid gap-1.5">
                         {nestLabel ? tooltipLabel : null}
                         <span className="text-muted-foreground">
-                          {itemConfig?.label || item?.name}
+                          {itemConfig?.label || (item as any)?.name}
                         </span>
                       </div>
-                      {item?.value && (
+                      {(item as any)?.value && (
                         <span className="font-mono font-medium tabular-nums text-gray-900 dark:text-gray-100">
-                          {item.value.toLocaleString()}
+                          {(item as any).value.toLocaleString()}
                         </span>
                       )}
                     </div>
@@ -289,7 +289,7 @@ const ChartLegendContent = React.forwardRef<
 
           return (
             <div
-              key={item?.value}
+              key={(item as any)?.value}
               className={cn(
                 "flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-muted-foreground"
               )}
@@ -300,7 +300,7 @@ const ChartLegendContent = React.forwardRef<
                 <div
                   className="h-2 w-2 shrink-0 rounded-[2px]"
                   style={{
-                    backgroundColor: item.color,
+                    backgroundColor: (item as any)?.color,
                   }}
                 />
               )}
