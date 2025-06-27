@@ -1,5 +1,5 @@
 {
-  "include": ["src/**/*", "shared/**/*", "server/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "build", "dist", "**/*.test.ts"],
   "compilerOptions": {
     "incremental": true,
@@ -19,8 +19,7 @@
       "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
       "@lib/*": ["src/lib/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@shared/*": ["shared/*"]
+      "@hooks/*": ["src/hooks/*"]
     }
   }
 }
