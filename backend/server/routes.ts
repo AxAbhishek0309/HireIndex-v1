@@ -1,10 +1,10 @@
 import type { Express, Request, Response } from "express";
 import { createServer, type Server } from "http";
-import { storage } from "./storage";
+import { storage } from "./storage.js";
 import multer from "multer";
-import { extractTextFromDocument, isValidFileType } from "./document-parser";
-import { isResumeDocument } from "./gemini";
-import { analyzeResumeWithGemini } from "./gemini";
+import { extractTextFromDocument, isValidFileType } from "./document-parser.js";
+import { isResumeDocument } from "./gemini.js";
+import { analyzeResumeWithGemini } from "./gemini.js";
 import crypto from "crypto";
 
 // Configure multer for file uploads (store in memory)

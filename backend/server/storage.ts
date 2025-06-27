@@ -1,5 +1,5 @@
-import { resumeAnalysis, type ResumeAnalysis, type InsertResumeAnalysis, users, type User, type InsertUser } from "../shared/schema";
-import { db } from "./db";
+import { resumeAnalysis, type ResumeAnalysis, type InsertResumeAnalysis, users, type User, type InsertUser } from "../shared/schema.js";
+import { db } from "./db.js";
 import { eq, desc } from "drizzle-orm";
 
 // Storage interface defines the methods for interacting with the data

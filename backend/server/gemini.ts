@@ -167,7 +167,11 @@ export async function analyzeResumeWithGemini(text: string): Promise<ResumeAnaly
 
   let result: ResumeAnalysisResult;
   try {
-    result = JSON.parse(resultText);
+    // Parse repeatedly until resultText is an object
+    while (typeof resultText === "string") {
+      resultText = JSON.parse(resultText);
+    }
+    result = resultText;
   } catch (e) {
     throw new Error("Failed to parse Gemini response as JSON: " + resultText);
   }
