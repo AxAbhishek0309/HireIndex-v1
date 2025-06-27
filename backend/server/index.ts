@@ -7,9 +7,19 @@ const app = express();
 
 // Enable CORS for frontend
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production'
-    ? ['https://hire-index-v1-eumt.vercel.app']
-    : ['http://localhost:5173', 'http://localhost:3000'],
+  origin: (origin, callback) => {
+    if (
+      !origin ||
+      origin === 'http://localhost:5173' ||
+      origin === 'http://localhost:3000' ||
+      origin === 'https://hire-index-v1-eumt.vercel.app' || // your production domain
+      origin.endsWith('.vercel.app') // allow all Vercel previews
+    ) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 
